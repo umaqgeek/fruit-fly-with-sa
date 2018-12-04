@@ -131,7 +131,7 @@ public class Func {
             br = new BufferedReader(fr);
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
-                if (sCurrentLine.length() > 2) {
+                if (sCurrentLine.length() > 2 && sCurrentLine.charAt(0) != '#') {
                     Object d[] = sCurrentLine.split(",");
                     numCols = d.length;
                     data.add(d);

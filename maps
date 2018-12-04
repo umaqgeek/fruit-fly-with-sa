@@ -1,3 +1,9 @@
+# First column: City name.
+# Second column: Latitude location.
+# Third column: Longitute location.
+# Format: <city name>,<latitute>,<longitute>
+# Seperate between cities with enter.
+
 MiTC Melaka,2.2714843,102.28636
 Zoo Melaka,2.2778543,102.2991534
 Taman Botanikal Melaka,2.280702,102.2984493
