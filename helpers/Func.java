@@ -138,7 +138,7 @@ public class Func {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error: "+e.getMessage());
         } finally {
             try {
                 if (br != null) {
@@ -148,7 +148,7 @@ public class Func {
                     fr.close();
                 }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("Error: "+ex.getMessage());
             }
         }
         Object objData[][] = null;
@@ -160,7 +160,6 @@ public class Func {
                 objData[index][2] = Float.parseFloat((String) data.get(index)[2]);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("Error: "+e.getMessage());
         }
         return objData;
