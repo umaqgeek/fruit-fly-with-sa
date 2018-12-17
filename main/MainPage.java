@@ -14,11 +14,11 @@ import helpers.Func;
  * @author umarmukhtar
  */
 public class MainPage {
-    
+
     public static void main(String[] args) {
-        
+
         long startTime = System.currentTimeMillis();
-        
+
         boolean isWithSwap = true;
         Object initCities[][] = {
             {"MiTC Melaka", 2.2714843f, 102.28636f},
@@ -44,14 +44,15 @@ public class MainPage {
             e.printStackTrace();
             System.out.println("Arguments error! System will use default config and maps.");
         }
-        
+
         // fruit fly process
         FruitFlySmellRadius ffsr = new FruitFlySmellRadius();
-        int numBees = 1;
-        double temperature = 10000;
-        double rate = 0.003;
-        ffsr.process(isWithSwap, initCities, numBees, temperature, rate);
-        
+        int numBees = 100;
+        double temperature = 113;
+        double rate = 0.8;
+        double stop = 60.0;
+        ffsr.process(isWithSwap, initCities, numBees, temperature, rate, stop);
+
         System.out.print("Execution time: ");
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;

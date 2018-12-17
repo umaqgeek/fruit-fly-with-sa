@@ -18,7 +18,7 @@ import models.City;
  * @author umarmukhtar
  */
 public class Func {
-    
+
     public static final double MAX_DOUBLE_VALUE = 10000.00;
     public static final String DISTANCE_TAG = "distance";
     public static final String SMELL_CONCENTRATION_TAG = "smellConcentration";
@@ -30,50 +30,50 @@ public class Func {
     public static final String CITY_Y_TAG = "yCityAxis";
     public static final String X_TAG = "xAxis";
     public static final String Y_TAG = "yAxis";
-    
+
     public static String getFormatDistanceInKM(double num) {
         DecimalFormat df = new DecimalFormat("#,##0.00");
         return df.format(num);
     }
-    
+
     public static String getFormatDistanceInKM(float num) {
         DecimalFormat df = new DecimalFormat("#,##0.00");
         return df.format(num);
     }
-    
+
     public static String getFormatDistanceInCoordinate(double num) {
         DecimalFormat df = new DecimalFormat("#,##0.0000000");
         return df.format(num);
     }
-    
+
     public static String getFormatDistanceInCoordinate(float num) {
         DecimalFormat df = new DecimalFormat("#,##0.0000000");
         return df.format(num);
     }
-    
+
     public static int getRandomInt(int min, int max) {
         Random random = new Random();
         double d = min + random.nextDouble() * (max-min);
         return (int) d;
     }
-    
+
     public static float getRandom() {
         Random random = new Random();
         return random.nextFloat();
     }
-    
+
     public static double getRandomDouble() {
         Random random = new Random();
         return random.nextInt(1000) / 1000.0;
     }
-    
+
     public static double getDistanceInKM(float locA[], float locB[]) {
         double d = 0.00;
-        float lon1 = locA[0],
-                lat1 = locA[1],
-                lon2 = locB[0],
-                lat2 = locB[1];
-        
+        float lat1 = locA[0],
+                lon1 = locA[1],
+                lat2 = locB[0],
+                lon2 = locB[1];
+
 //        double R = 6373.00;
 //        double dlon = lon2 - lon1;
 //        double dlat = lat2 - lat1;
@@ -81,7 +81,7 @@ public class Func {
 //        double a = Math.pow(aTemp, 2);
 //        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 //        d = R * c;
-        
+
         /**
          * Distance, d = 3963.0 * arccos[(sin(lat1) * sin(lat2)) + cos(lat1) * cos(lat2) * cos(long2 – long1)]
          */
@@ -94,14 +94,14 @@ public class Func {
 
         return d;
     }
-    
+
     public static double acceptanceProbability(double currentDistance, double newDistance, double temperature) {
         if (newDistance < currentDistance) {
             return 1.0;
         }
         return Math.exp((currentDistance - newDistance) / temperature);
     }
-    
+
     public static void viewAllPath(int index, Bee bee) {
         System.out.println("Travel Path Bee #" + (index) + ":");
         for (int cityIndex = 0; cityIndex < bee.paths().size(); cityIndex++) {
@@ -112,15 +112,16 @@ public class Func {
             System.out.print("(" + xCity + ", " + yCity + "), ");
             String xBee = getFormatDistanceInCoordinate((float) bee.paths().get(cityIndex).get(X_TAG));
             String yBee = getFormatDistanceInCoordinate((float) bee.paths().get(cityIndex).get(Y_TAG));
-            System.out.print("Bee (" + xBee + ", " + yBee + ") = ");
+            System.out.print("Bee (" + xBee + ", " + yBee + ")");
             String d = getFormatDistanceInKM((double) bee.paths().get(cityIndex).get(DISTANCE_TAG));
-            System.out.println(d + " km");
+            // System.out.println(d + " km");
+            System.out.println();
         }
         String totalDistance = getFormatDistanceInKM(bee.getTotalDistance());
         System.out.println("Total Distance: " + totalDistance + " km");
         System.out.println("");
     }
-    
+
     public Object[][] getCitiesFromFile(String fileName) {
         ArrayList<Object[]> data = new ArrayList<Object[]>();
         int numCols = 0;
